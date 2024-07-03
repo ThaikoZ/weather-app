@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    font-family: "Inter";
+  }
+  body {
+    width: 100vw;
+    height: 100vh;
+    background: rgb(33, 79, 139);
+    background: radial-gradient(
+      circle,
+      rgba(33, 79, 139, 1) 0%,
+      rgba(38, 88, 151, 1) 10%,
+      rgba(60, 111, 177, 1) 42%,
+      rgba(46, 135, 196, 1) 66%,
+      rgba(76, 122, 181, 1) 95%
+    );
+    background-position: top left;
+  }
+}
