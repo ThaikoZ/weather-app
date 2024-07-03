@@ -15,7 +15,7 @@ interface Props {
 }
 
 const SidebarButton = ({ item, onClick, className }: Props) => {
-  const { isCollapsed } = useSidebarContext();
+  const { isCollapsed, collapseSidebar } = useSidebarContext();
   const { pathname } = useLocation();
 
   const active = `/${item.id}` == pathname;
@@ -32,7 +32,10 @@ const SidebarButton = ({ item, onClick, className }: Props) => {
         "p-2 bg-black rounded-lg active:bg-opacity-25 hover:bg-opacity-20 cursor-pointer transition-colors ease-in flex items-center gap-2.5",
         className
       )}
-      onClick={onClick}
+      onClick={() => {
+        onClick && onClick();
+        collapseSidebar();
+      }}
     >
       <item.Icon className="size-6" />
       {!isCollapsed && <h1>{getTitle()}</h1>}

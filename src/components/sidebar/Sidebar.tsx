@@ -15,8 +15,8 @@ import ToggleCollapseButton from "./ToggleCollapseButton";
 const sidebarMenu = [
   { id: "dashboard", href: "/dashboard", Icon: Squares2X2Icon },
   { id: "map", href: "/map", Icon: MapIcon },
-  { id: "bookmarks", href: "/bookmark", Icon: BookmarkIcon },
-  { id: "localization", href: "/location", Icon: MapPinIcon },
+  { id: "bookmarks", href: "/bookmarks", Icon: BookmarkIcon },
+  { id: "localization", href: "/localization", Icon: MapPinIcon },
   { id: "settings", href: "/settings", Icon: Cog6ToothIcon },
 ];
 
