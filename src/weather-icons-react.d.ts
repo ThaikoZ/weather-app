@@ -11,4 +11,6 @@ declare module "weather-icons-react" {
   export const WiStrongWind: React.FC<IconProps>;
   export const WiRaindrop: React.FC<IconProps>;
   export const WiDust: React.FC<IconProps>;
+  export const WiHumidity: React.FC<IconProps>;
+  export const WiRaindrops: React.FC<IconProps>;
 }
