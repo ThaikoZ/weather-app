@@ -4,11 +4,11 @@ import BentoCard from "../components/BentoCard";
 import CurrentWeatherCard from "../components/dashboard/current-weather/CurrentWeatherCard";
 import NotificationBell from "../components/NotificationBell";
 import SearchInput from "../components/SearchInput";
-import { defaultWeatherObject, WeatherInterface } from "../utils/Weather";
+import { WeatherInterface } from "../utils/Weather";
 import { axiosInstance, apiKey } from "../services/api-client";
 
 const DashboardPage = () => {
-  const [data, setData] = useState<WeatherInterface>(defaultWeatherObject);
+  const [data, setData] = useState<WeatherInterface>();
 
   useEffect(() => {
     axiosInstance
@@ -32,25 +32,28 @@ const DashboardPage = () => {
       </div>
       <div className="w-full grid grid-cols-12 gap-5 space-5">
         <CurrentWeatherCard
-          data={data.currentConditions}
+          data={data?.currentConditions}
           className="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3"
         />
-        <BentoCard className="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-6">
+        <BentoCard className="px-5 py-7 col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-6">
           Map
         </BentoCard>
         <BentoCard
           light
-          className=" col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 "
+          className="px-5 py-7  col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 "
         >
           Popular Cities
         </BentoCard>
         <BentoCard
           light
-          className=" col-span-12 sm:col-span-6 lg:col-span-6 xl:col-span-3 "
+          className="px-5 py-7  col-span-12 sm:col-span-6 lg:col-span-6 xl:col-span-3 "
         >
           Forecast
         </BentoCard>
-        <BentoCard light className=" col-span-12 lg:col-span-6 xl:col-span-9">
+        <BentoCard
+          light
+          className="px-5 py-7  col-span-12 lg:col-span-6 xl:col-span-9"
+        >
           Summary
         </BentoCard>
       </div>

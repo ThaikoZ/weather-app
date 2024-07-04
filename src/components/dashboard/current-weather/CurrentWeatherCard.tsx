@@ -8,15 +8,13 @@ import {
   WiHumidity,
   IconProps,
 } from "weather-icons-react";
-import Icon from "../../Icon";
-import {
-  convertToCelcius,
-  CurrentWeatherInterface,
-} from "../../../utils/Weather";
+import { CurrentWeatherInterface } from "../../../utils/Weather";
 import WeatherDetailTile from "./WeatherDetailTile";
+import WeatherIcon from "./WeatherIcon";
+import CurrentTemperatureTile from "./CurrentTemperatureTile";
 
 interface Props {
-  data: CurrentWeatherInterface;
+  data?: CurrentWeatherInterface;
   className?: string;
 }
 
@@ -26,6 +24,8 @@ export interface WeatherDetail {
 }
 
 const CurrentWeatherCard = ({ className, data }: Props) => {
+  if (!data) return;
+
   const weatherDetails: WeatherDetail[] = [
     { value: data.pressure, Icon: WiDust },
     { value: data.precipprob + "%", Icon: WiRaindrop },
@@ -46,7 +46,7 @@ const CurrentWeatherCard = ({ className, data }: Props) => {
   };
 
   return (
-    <BentoCard className={classNames(className, "")}>
+    <BentoCard className={classNames(className, "px-5 py-7 ")}>
       <div className="grid grid-cols-12 h-fit">
         <div className="col-span-12 row-span-1">
           <h2 className="font-semibold text-lg ">Current Weather</h2>
@@ -55,28 +55,13 @@ const CurrentWeatherCard = ({ className, data }: Props) => {
           <p className="text-sm font-light">{getCurrentTime12Hour()}</p>
         </div>
         <div className="col-span-12 xsm:col-span-5  sm:col-span-12 md:col-span-5 flex justify-center">
-          <div className="w-36">
-            <Icon Icon={WiDaySunny} />
-          </div>
+          <WeatherIcon iconProp={WiDaySunny} />
         </div>
         <div className="col-span-12 xsm:col-span-7  sm:col-span-12 md:col-span-7 flex justify-center">
-          <div className="flex w-fit xsm:mt-3 sm:mt-0 md:mt-3 ms-5 ">
-            <div>
-              <div className="text-8xl font-bold">
-                {Math.round(convertToCelcius(data.temp))}
-              </div>
-              <div
-                className={classNames(
-                  { "text-center": data.temp >= 0 },
-                  { "text-end": data.temp < 0 },
-                  "text-xl font-regular"
-                )}
-              >
-                Heavy Rain
-              </div>
-            </div>
-            <div className=" text-3xl font-medium">°C</div>
-          </div>
+          <CurrentTemperatureTile
+            temp={data.temp}
+            conditions={data.conditions}
+          />
         </div>
         {weatherDetails.map((item, index) => (
           <WeatherDetailTile item={item} key={index} />

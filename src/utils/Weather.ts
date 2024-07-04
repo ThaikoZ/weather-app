@@ -11,22 +11,10 @@ export interface CurrentWeatherInterface {
   temp: number;
   windspeed: number;
   precipprob: number;
+  icon: string;
 }
 
 export interface WeatherInterface {
   address: string;
   currentConditions: CurrentWeatherInterface;
 }
-
-export const defaultWeatherObject: WeatherInterface = {
-  address: "",
-  currentConditions: {
-    conditions: "",
-    datetime: "",
-    humidity: 0,
-    pressure: 0,
-    temp: 0,
-    windspeed: 0,
-    precipprob: 25,
-  },
-};
