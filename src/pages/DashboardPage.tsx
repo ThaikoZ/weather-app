@@ -1,10 +1,11 @@
 import Avatar from "../components/Avatar";
+import BentoCard from "../components/BentoCard";
 import NotificationBell from "../components/NotificationBell";
 import SearchInput from "../components/SearchInput";
 
 const DashboardPage = () => {
   return (
-    <div className="selection:bg-none flex flex-col gap-10 w-full p-10">
+    <div className="sm:h-[100vh] selection:bg-none flex flex-col gap-10 w-full p-10">
       <div className="flex justify-between w-full gap-5 h-10">
         <div className="">
           <SearchInput />
@@ -13,20 +14,22 @@ const DashboardPage = () => {
           <NotificationBell /> <Avatar />
         </div>
       </div>
-      <div className="w-full grid grid-cols-12 gap-5 space-5">
-        <div className="col-span-12 sm:col-span-6 lg:col-span-3 bg-indigo-500">
+      <div className="w-full sm:h-full grid grid-cols-12 gap-5 space-5">
+        <BentoCard className="col-span-12 sm:col-span-6 xl:col-span-3">
           Current Weather
-        </div>
-        <div className="col-span-12 sm:col-span-6 lg:col-span-6 bg-indigo-500">
+        </BentoCard>
+        <BentoCard className="col-span-12 sm:col-span-6 xl:col-span-6  ">
           Map
-        </div>
-        <div className="col-span-12 sm:col-span-6 lg:col-span-3 bg-indigo-500">
+        </BentoCard>
+        <BentoCard light className=" col-span-12 sm:col-span-6 xl:col-span-3 ">
           Popular Cities
-        </div>
-        <div className="col-span-12 sm:col-span-6 lg:col-span-3 bg-indigo-500">
+        </BentoCard>
+        <BentoCard light className=" col-span-12 sm:col-span-6 xl:col-span-3 ">
           Forecast
-        </div>
-        <div className="col-span-12 lg:col-span-9 bg-indigo-500">Summary</div>
+        </BentoCard>
+        <BentoCard light className=" col-span-12 xl:col-span-9">
+          Summary
+        </BentoCard>
       </div>
     </div>
   );
