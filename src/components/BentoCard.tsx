@@ -14,7 +14,8 @@ const BentoCard = ({ className, light = false, children }: Props) => {
         className,
         { "bg-black bg-opacity-15": !light },
         { "bg-white bg-opacity-15": light },
-        "backdrop-blur-md px-5 py-8 text-center text-white transition-transform duration-500 rounded-2xl hover:scale-[101%] overflow-hidden h-[238px] sm:h-auto"
+        "backdrop-blur-md px-5 py-7 text-start text-white transition-transform duration-500 rounded-2xl hover:scale-[101%] overflow-hidden ",
+        { "h-[238px] sm:h-auto": false }
       )}
     >
       {children}
