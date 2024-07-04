@@ -30,7 +30,7 @@ const Sidebar = () => {
           className={classNames(
             { "w-20": isCollapsed },
             { "w-56": !isCollapsed },
-            "flex flex-col gap-10  justify-between backdrop-blur-md bg-black bg-opacity-20 shadow-lg px-5 py-8 text-center text-white transition-transform duration-500"
+            "flex flex-col gap-10  justify-between backdrop-blur-md bg-black bg-opacity-20  px-5 py-8 text-center text-white transition-transform duration-500"
           )}
         >
           <div className="flex flex-col gap-10">
@@ -46,17 +46,15 @@ const Sidebar = () => {
         </div>
       </div>
       {!isCollapsed && (
-        <div className="flex absolute top-0 w-full overflow-hidden h-full z-10 cursor-pointer">
+        <div className="flex fixed top-0 w-full overflow-hidden h-full z-10 cursor-pointer ">
           <div className="min-w-56 max-w-56"></div>
           <div
             className="w-full bg-black bg-opacity-55 "
             onClick={toggleCollapse}
-          >
-            d
-          </div>
+          ></div>
         </div>
       )}
-      <div className="ps-20">
+      <div className="ps-20 min-h-max">
         <Outlet />
       </div>
     </>

@@ -5,7 +5,7 @@ const SearchInput = () => {
     <form className="h-full">
       <label className="relative block h-full">
         <span className="sr-only">Search</span>
-        <span className="absolute inset-y-0 left-0 flex items-center pl-3 z-10">
+        <span className="absolute inset-y-0 left-0 flex items-center pl-2.5 z-10">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -23,7 +23,7 @@ const SearchInput = () => {
         </span>
         <input
           type="text"
-          className="py-2.5 pe-3 h-full w-full backdrop-blur-md bg-black bg-opacity-20 text-[0.95rem] shadow-lg rounded-lg text-white placeholder:text-white placeholder:text-opacity-55 placeholder:font-light ps-11 focus:bg-opacity-25 "
+          className="py-2.5 pe-3 h-full w-full backdrop-blur-md bg-black bg-opacity-20 text-[0.95rem] shadow-md rounded-lg text-white placeholder:text-white placeholder:text-opacity-55 placeholder:font-light ps-11 focus:bg-opacity-25 "
           placeholder="Search for location"
           maxLength={35}
         />
