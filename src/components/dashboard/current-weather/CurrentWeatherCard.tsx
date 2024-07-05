@@ -12,6 +12,7 @@ import { CurrentWeatherInterface } from "../../../utils/Weather";
 import WeatherDetailTile from "./WeatherDetailTile";
 import WeatherIcon from "./WeatherIcon";
 import CurrentTemperatureTile from "./CurrentTemperatureTile";
+import CurrentWeatherSkeleton from "./CurrentWeatherSkeleton";
 
 interface Props {
   data?: CurrentWeatherInterface;
@@ -24,7 +25,12 @@ export interface WeatherDetail {
 }
 
 const CurrentWeatherCard = ({ className, data }: Props) => {
-  if (!data) return;
+  if (!data)
+    return (
+      <BentoCard className={classNames(className, "px-5 py-7 ")}>
+        <CurrentWeatherSkeleton />
+      </BentoCard>
+    );
 
   const weatherDetails: WeatherDetail[] = [
     { value: data.pressure, Icon: WiDust },
@@ -54,10 +60,10 @@ const CurrentWeatherCard = ({ className, data }: Props) => {
         <div className="col-span-12 row-span-1">
           <p className="text-sm font-light">{getCurrentTime12Hour()}</p>
         </div>
-        <div className="col-span-12 xsm:col-span-5  sm:col-span-12 md:col-span-5 flex justify-center">
+        <div className="col-span-12 xsm:col-span-5 sm:col-span-12 md:col-span-5 flex justify-center">
           <WeatherIcon iconProp={WiDaySunny} />
         </div>
-        <div className="col-span-12 xsm:col-span-7  sm:col-span-12 md:col-span-7 flex justify-center">
+        <div className="col-span-12 xsm:col-span-7 sm:col-span-12 md:col-span-7 flex justify-center">
           <CurrentTemperatureTile
             temp={data.temp}
             conditions={data.conditions}

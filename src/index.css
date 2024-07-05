@@ -31,3 +31,15 @@
     background-size: cover;
   }
 }
+
+@layer components {
+  .skeleton-glass-morphizm {
+    background-color: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(0.5rem);
+    text-align: start;
+    color: white;
+    transition-duration: 500ms;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+}
