@@ -17,4 +17,6 @@ export interface CurrentWeatherInterface {
 export interface WeatherInterface {
   address: string;
   currentConditions: CurrentWeatherInterface;
+  latitude: number;
+  longitude: number;
 }

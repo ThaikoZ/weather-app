@@ -6,6 +6,7 @@ import NotificationBell from "../components/NotificationBell";
 import SearchInput from "../components/SearchInput";
 import { WeatherInterface } from "../utils/Weather";
 import { axiosInstance, apiKey } from "../services/api-client";
+import MapCard from "../components/dashboard/map/MapCard";
 
 const DashboardPage = () => {
   const [data, setData] = useState<WeatherInterface>();
@@ -33,11 +34,14 @@ const DashboardPage = () => {
       <div className="w-full grid grid-cols-12 gap-5 space-5">
         <CurrentWeatherCard
           data={data?.currentConditions}
-          className="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3"
+          className="h-[338px] sm:h-full col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3"
         />
-        <BentoCard className="px-5 py-7 col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-6">
-          Map
-        </BentoCard>
+        {/* 52.2297  21.0122 */}
+        <MapCard
+          className="h-[338px] sm:h-full"
+          lat={data?.latitude}
+          lng={data?.longitude}
+        />
         <BentoCard
           light
           className="px-5 py-7  col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 "
