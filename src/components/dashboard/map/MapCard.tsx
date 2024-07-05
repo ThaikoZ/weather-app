@@ -3,6 +3,7 @@ import BentoCard from "../../BentoCard";
 import { Map } from "@vis.gl/react-google-maps";
 import Button from "../../Button";
 import { EllipsisVerticalIcon, MapPinIcon } from "@heroicons/react/16/solid";
+import MapSkeleton from "./MapSkeleton";
 
 interface Props {
   className?: string;
@@ -35,7 +36,7 @@ const MapCard = ({ className, lat, lng }: Props) => {
           </Button>
         </>
       ) : (
-        <p>loading</p>
+        <MapSkeleton />
       )}
     </BentoCard>
   );

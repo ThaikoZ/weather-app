@@ -34,7 +34,7 @@ const DashboardPage = () => {
       <div className="w-full grid grid-cols-12 gap-5 space-5">
         <CurrentWeatherCard
           data={data?.currentConditions}
-          className="h-[338px] sm:h-full col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3"
+          className=" col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3"
         />
         {/* 52.2297  21.0122 */}
         <MapCard
