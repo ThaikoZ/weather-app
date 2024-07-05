@@ -30,7 +30,7 @@ const Sidebar = () => {
           className={classNames(
             { "w-20": isCollapsed },
             { "w-56": !isCollapsed },
-            "flex flex-col gap-10  justify-between backdrop-blur-md bg-black bg-opacity-20  px-5 py-8 text-center text-white transition-transform duration-500"
+            "flex flex-col gap-10  justify-between backdrop-blur-md bg-black bg-opacity-20 transition-colors hover:bg-opacity-[0.22] px-5 py-8 text-center text-white  duration-500"
           )}
         >
           <div className="flex flex-col gap-10">
