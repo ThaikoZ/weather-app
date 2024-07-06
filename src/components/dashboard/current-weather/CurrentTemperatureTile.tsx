@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { convertToCelcius } from "../../../utils/Weather";
+import { capitalizeEachWord } from "../../../utils/StringFunc";
 
 interface Props {
   temp: number;
@@ -7,14 +8,6 @@ interface Props {
 }
 
 const CurrentTemperatureTile = ({ temp, conditions }: Props) => {
-  const capitalizeEachWord = (str: string): string => {
-    if (!str) return "";
-    return str
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-      .join(" ");
-  };
-
   return (
     <div className="w-fit xsm:mt-3 sm:mt-0 md:mt-3 ms-5 ">
       <div className="flex">
@@ -29,7 +22,7 @@ const CurrentTemperatureTile = ({ temp, conditions }: Props) => {
           "text-center text-xl font-regular"
         )}
       >
-        {capitalizeEachWord(conditions)}
+        {capitalizeEachWord(conditions.split(",")[0])}
       </div>
     </div>
   );

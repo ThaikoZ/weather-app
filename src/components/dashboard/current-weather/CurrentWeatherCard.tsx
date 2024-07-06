@@ -10,9 +10,9 @@ import {
 } from "weather-icons-react";
 import { CurrentWeatherInterface } from "../../../utils/Weather";
 import WeatherDetailTile from "./WeatherDetailTile";
-import WeatherIcon from "./WeatherIcon";
 import CurrentTemperatureTile from "./CurrentTemperatureTile";
 import CurrentWeatherSkeleton from "./CurrentWeatherSkeleton";
+import WeatherIcon from "../../WeatherIcon";
 
 interface Props {
   data?: CurrentWeatherInterface;
@@ -52,16 +52,16 @@ const CurrentWeatherCard = ({ className, data }: Props) => {
   };
 
   return (
-    <BentoCard className={classNames(className, "px-5 py-7 ")}>
+    <BentoCard className={classNames(className, "px-7 py-7 ")}>
       <div className="grid grid-cols-12 h-fit">
         <div className="col-span-12 row-span-1">
-          <h2 className="font-semibold text-lg ">Current Weather</h2>
+          <h2 className="font-semibold text-[1.2rem] ">Current Weather</h2>
         </div>
         <div className="col-span-12 row-span-1">
           <p className="text-sm font-light">{getCurrentTime12Hour()}</p>
         </div>
-        <div className="col-span-12 xsm:col-span-5 sm:col-span-12 md:col-span-5 flex justify-center">
-          <WeatherIcon iconProp={WiDaySunny} />
+        <div className="col-span-12 xsm:col-span-5  sm:col-span-12 md:col-span-5 flex justify-center">
+          <WeatherIcon weatherTitle={data.icon} size={140} />
         </div>
         <div className="col-span-12 xsm:col-span-7 sm:col-span-12 md:col-span-7 flex justify-center">
           <CurrentTemperatureTile

@@ -1,3 +1,8 @@
+# Environment files
+.env
+.env.*
+*.env
+
 # Logs
 logs
 *.log
@@ -7,9 +12,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-.env/
-*env*
-
+# Dependency directories
 node_modules
 dist
 dist-ssr
