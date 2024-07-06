@@ -18,7 +18,8 @@ const SidebarButton = ({ item, onClick, className }: Props) => {
   const { isCollapsed, collapseSidebar } = useSidebarContext();
   const { pathname } = useLocation();
 
-  const active = `/${item.id}` == pathname;
+  const isActive =
+    pathname.includes(item.id) || (pathname == "/" && item.id == "dashboard");
 
   const getTitle = () => {
     return item.id[0].toUpperCase() + item.id.slice(1);
@@ -27,8 +28,8 @@ const SidebarButton = ({ item, onClick, className }: Props) => {
   return (
     <div
       className={classNames(
-        { "bg-opacity-20": active },
-        { "bg-opacity-0": !active },
+        { "bg-opacity-20": isActive },
+        { "bg-opacity-0": !isActive },
         "p-2 bg-black rounded-lg active:bg-opacity-25 hover:bg-opacity-20 cursor-pointer transition-colors ease-in flex items-center gap-2.5",
         className
       )}
