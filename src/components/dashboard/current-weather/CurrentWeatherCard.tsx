@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import BentoCard from "../../BentoCard";
 import {
-  WiDaySunny,
   WiStrongWind,
   WiRaindrop,
   WiDust,
