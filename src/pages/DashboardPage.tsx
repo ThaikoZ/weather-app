@@ -48,7 +48,7 @@ const DashboardPage = () => {
 
     fetchParametrized();
     // fetchPopularCities();
-  }, [searchParams]);
+  }, []);
 
   return (
     <div className="md:h-[100vh] selection:bg-none flex flex-col gap-10 w-full p-10">
