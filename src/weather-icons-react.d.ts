@@ -7,6 +7,10 @@ declare module "weather-icons-react" {
     className?: string;
   }
 
+  export const WiDayCloudy: React.FC<IconProps>;
+  export const WiRain: React.FC<IconProps>;
+  export const WiCloudy: React.FC<IconProps>;
+
   export const WiDaySunny: React.FC<IconProps>;
   export const WiStrongWind: React.FC<IconProps>;
   export const WiRaindrop: React.FC<IconProps>;
