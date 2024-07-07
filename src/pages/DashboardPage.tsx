@@ -2,20 +2,22 @@ import { useEffect, useState } from "react";
 import Avatar from "../components/Avatar";
 import BentoCard from "../components/BentoCard";
 import CurrentWeatherCard from "../components/dashboard/current-weather/CurrentWeatherCard";
-import NotificationBell from "../components/NotificationBell";
-import SearchInput from "../components/SearchInput";
+import NotificationBell from "../components/dashboard/NotificationBell";
+import SearchInput from "../components/dashboard/SearchInput";
 import { MultiWeatherInterface, WeatherInterface } from "../utils/Weather";
 import MapCard from "../components/dashboard/map/MapCard";
 import axios from "axios";
 import PopularCitiesCard from "../components/dashboard/popular-cities/PopularCitiesCard";
 import { useSearchParams } from "react-router-dom";
+import popularCitiesData from "../data/popularCities";
 
 const DEFAULT_CITY = "Warsaw";
 
 const DashboardPage = () => {
   const [searchParams] = useSearchParams();
   const [data, setData] = useState<WeatherInterface>();
-  const [popularData, setPopularData] = useState<MultiWeatherInterface>();
+  const [popularData, setPopularData] =
+    useState<MultiWeatherInterface>(popularCitiesData);
 
   useEffect(() => {
     const fetchParametrized = async () => {
@@ -32,22 +34,7 @@ const DashboardPage = () => {
         .catch((err) => console.error(err));
     };
 
-    const fetchPopularCities = async () => {
-      const URL =
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${
-          import.meta.env.VITE_WEATHER_API_KEY
-        }&locations=` + encodeURIComponent("London|Paris|Tokyo|Berlin|Warsaw");
-
-      axios
-        .get<MultiWeatherInterface>(URL)
-        .then((res) => {
-          setPopularData(res.data);
-        })
-        .catch((err) => console.error(err));
-    };
-
     fetchParametrized();
-    // fetchPopularCities();
   }, []);
 
   return (
