@@ -8,10 +8,13 @@ import {
 } from "weather-icons-react";
 
 const weatherMap: { [key: string]: React.FC<IconProps> } = {
+  //TODO: Add nightly icons
+  "partly-cloudy-night": WiDayCloudy,
   "partly-cloudy-day": WiDayCloudy,
   rain: WiRain,
   cloudy: WiCloudy,
   "clear-day": WiDaySunny,
+  "clear-night": WiDaySunny,
 };
 
 const WeatherIcon: React.FC<{
@@ -22,7 +25,7 @@ const WeatherIcon: React.FC<{
   const IconComponent = weatherMap[weatherTitle];
 
   if (!IconComponent) {
-    return <div>icon</div>;
+    return <div>{weatherTitle}</div>;
   }
 
   return <IconComponent size={size} color={color} className="m-0 p-0" />;
