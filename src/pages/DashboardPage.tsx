@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Avatar from "../components/Avatar";
-import BentoCard from "../components/BentoCard";
 import CurrentWeatherCard from "../components/dashboard/current-weather/CurrentWeatherCard";
 import NotificationBell from "../components/dashboard/NotificationBell";
 import SearchInput from "../components/dashboard/SearchInput";
@@ -11,6 +10,7 @@ import PopularCitiesCard from "../components/dashboard/popular-cities/PopularCit
 import { useSearchParams } from "react-router-dom";
 import popularCitiesData from "../data/popularCities";
 import ForecastCard from "../components/dashboard/forecast/ForecastCard";
+import SummaryCard from "../components/dashboard/summary/SummaryCard";
 
 const DEFAULT_CITY = "Warsaw";
 
@@ -74,12 +74,7 @@ const DashboardPage = () => {
         />
         <PopularCitiesCard className="h-full" data={popularData} />
         <ForecastCard days={data?.days} />
-        <BentoCard
-          light
-          className="px-5 py-7  col-span-12 lg:col-span-6 xl:col-span-9"
-        >
-          Summary
-        </BentoCard>
+        <SummaryCard days={data?.days} />
       </div>
     </div>
   );

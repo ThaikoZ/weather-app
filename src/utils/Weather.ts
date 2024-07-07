@@ -12,6 +12,7 @@ export interface CurrentWeatherInterface {
   windspeed: number;
   precipprob: number;
   icon: string;
+  hours: CurrentWeatherInterface[];
 }
 
 export interface WeatherInterface {
