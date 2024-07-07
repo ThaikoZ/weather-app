@@ -10,6 +10,7 @@ import axios from "axios";
 import PopularCitiesCard from "../components/dashboard/popular-cities/PopularCitiesCard";
 import { useSearchParams } from "react-router-dom";
 import popularCitiesData from "../data/popularCities";
+import ForecastCard from "../components/dashboard/forecast/ForecastCard";
 
 const DEFAULT_CITY = "Warsaw";
 
@@ -30,6 +31,7 @@ const DashboardPage = () => {
         .get<WeatherInterface>(URL)
         .then((res) => {
           setData(res.data);
+          console.log(res.data);
         })
         .catch((err) => console.error(err));
     };
@@ -38,7 +40,7 @@ const DashboardPage = () => {
   }, []);
 
   return (
-    <div className="md:h-[100vh] selection:bg-none flex flex-col gap-10 w-full p-10">
+    <div className="xl:h-[100vh] selection:bg-none flex flex-col gap-10 w-full p-10">
       <div className="flex justify-between w-full gap-5 h-10">
         <div>
           <SearchInput />
@@ -58,12 +60,7 @@ const DashboardPage = () => {
           lng={data?.longitude}
         />
         <PopularCitiesCard className="h-full" data={popularData} />
-        <BentoCard
-          light
-          className="px-5 py-7  col-span-12 sm:col-span-6 lg:col-span-6 xl:col-span-3 "
-        >
-          Forecast
-        </BentoCard>
+        <ForecastCard days={data?.days} />
         <BentoCard
           light
           className="px-5 py-7  col-span-12 lg:col-span-6 xl:col-span-9"
