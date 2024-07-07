@@ -3,6 +3,17 @@ export const convertToCelcius = (fahrenheit: number): number => {
   return Math.round(celsius * 100) / 100;
 };
 
+interface Hours {
+  conditions: string;
+  datetime: string;
+  humidity: number;
+  pressure: number;
+  temp: number;
+  windspeed: number;
+  precipprob: number;
+  icon: string;
+}
+
 export interface CurrentWeatherInterface {
   conditions: string;
   datetime: string;
@@ -12,7 +23,7 @@ export interface CurrentWeatherInterface {
   windspeed: number;
   precipprob: number;
   icon: string;
-  hours: CurrentWeatherInterface[];
+  hours?: Hours[];
 }
 
 export interface WeatherInterface {

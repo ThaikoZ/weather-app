@@ -60,7 +60,7 @@ const SummaryCard = ({ days }: Props) => {
         </div>
       </div> */}
       <div className="flex flex-col justify-end h-full items-end">
-        <WeatherChart days={days} mode={"hourly"} />
+        <WeatherChart days={days!} mode={"hourly"} />
       </div>
     </BentoCard>
   );

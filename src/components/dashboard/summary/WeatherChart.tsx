@@ -30,10 +30,10 @@ const WeatherChart = ({ days }: Props) => {
       const isNextDay = currentHour + itemsAmount >= 24;
 
       if (!isNextDay)
-        days = days[0].hours.slice(currentHour - 1, currentHour + itemsAmount);
+        days = days[0].hours!.slice(currentHour - 1, currentHour + itemsAmount);
       else {
-        const d1 = days[0].hours.slice(currentHour - 1, days[0].hours.length);
-        const d2 = days[1].hours.slice(0, currentHour + itemsAmount - 24);
+        const d1 = days[0].hours!.slice(currentHour - 1, days[0].hours!.length);
+        const d2 = days[1].hours!.slice(0, currentHour + itemsAmount - 24);
         days = [...d1, ...d2];
       }
 

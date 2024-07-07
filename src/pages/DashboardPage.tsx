@@ -17,8 +17,7 @@ const DEFAULT_CITY = "Warsaw";
 const DashboardPage = () => {
   const [searchParams] = useSearchParams();
   const [data, setData] = useState<WeatherInterface>();
-  const [popularData, setPopularData] =
-    useState<MultiWeatherInterface>(popularCitiesData);
+  const [popularData, setPopularData] = useState<MultiWeatherInterface>();
 
   useEffect(() => {
     const fetchParametrized = async () => {
@@ -35,7 +34,7 @@ const DashboardPage = () => {
         .catch((err) => console.error(err));
     };
     fetchParametrized();
-
+    setPopularData({ locations: popularCitiesData.locations });
     // const fetchPopularCities = async () => {
     //   const URL =
     //     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${
