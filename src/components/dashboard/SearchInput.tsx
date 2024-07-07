@@ -1,37 +1,7 @@
-import { FormEvent, useRef } from "react";
+import useSearch from "../../hooks/useSearch";
 
 const SearchInput = () => {
-  const searchRef = useRef<HTMLInputElement>(null);
-
-  const serializeFormQuery = (value: string | null) => {
-    if (!value) return "";
-    return "?location=" + encodeURIComponent(value);
-  };
-
-  const validateInput = (value: string | null) => {
-    if (!value || value.trim() === "") {
-      return "Search input cannot be empty.";
-    }
-    if (value.length > 35) {
-      return "Search input cannot exceed 35 characters.";
-    }
-    return null;
-  };
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const value = searchRef.current?.value || "";
-    const validationError = validateInput(value);
-
-    if (validationError) {
-      return;
-    }
-
-    const params = serializeFormQuery(value);
-    if (params) {
-      window.location.href = params;
-    }
-  };
+  const { searchRef, handleSubmit } = useSearch();
 
   return (
     <form className="h-full" onSubmit={handleSubmit}>
