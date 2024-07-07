@@ -31,16 +31,29 @@ const DashboardPage = () => {
         .get<WeatherInterface>(URL)
         .then((res) => {
           setData(res.data);
-          console.log(res.data);
         })
         .catch((err) => console.error(err));
     };
-
     fetchParametrized();
+
+    // const fetchPopularCities = async () => {
+    //   const URL =
+    //     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${
+    //       import.meta.env.VITE_WEATHER_API_KEY
+    //     }&locations=` + encodeURIComponent("London|Paris|Tokyo|Berlin|Warsaw");
+
+    //   axios
+    //     .get<MultiWeatherInterface>(URL)
+    //     .then((res) => {
+    //       setPopularData(res.data);
+    //     })
+    //     .catch((err) => console.error(err));
+    // };
+    // fetchPopularCities();
   }, []);
 
   return (
-    <div className="xl:h-[100vh] selection:bg-none flex flex-col gap-10 w-full p-10">
+    <div className="selection:bg-none flex flex-col gap-10 w-full p-10">
       <div className="flex justify-between w-full gap-5 h-10">
         <div>
           <SearchInput />

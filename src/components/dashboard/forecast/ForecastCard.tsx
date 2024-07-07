@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CurrentWeatherInterface } from "../../../utils/Weather";
 import BentoCard from "../../BentoCard";
 import ForecastItemList from "./ForecastItemList";
+import ForecastSkeleton from "./ForecastSkeleton";
 
 interface Props {
   days?: CurrentWeatherInterface[];
@@ -11,7 +12,15 @@ type Limit = 5 | 7;
 
 const ForecastCard = ({ days }: Props) => {
   const [daysLimit, setDaysLimit] = useState<Limit>(5);
-  if (!days) return;
+  if (!days)
+    return (
+      <BentoCard
+        light
+        className="px-7 py-7 col-span-12 sm:col-span-6 lg:col-span-6 xl:col-span-3 "
+      >
+        <ForecastSkeleton />{" "}
+      </BentoCard>
+    );
 
   return (
     <BentoCard
