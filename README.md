@@ -2,6 +2,10 @@
 
 Welcome to the Weather App! This application allows you to check the weather in cities around the world. You can search for any city and get detailed weather information. The app is responsive and uses the Weather API by Visual Crossing and Google Maps for its functionalities.
 
+#### Login
+Email: admin@weather.app
+Password: Admin1234!
+
 ## Live Demo
 
 - Frontend Hosting: [Weather App](https://weather-app-thaikoz.netlify.app/)
@@ -76,9 +80,8 @@ You can deploy the app to any static site hosting service, such as Netlify.
 
 ### Authentication
 
-- **Login**: Use the credentials `admin@weather.app` and password `admin`, or register a new account.
+- **Login**: Use the credentials `admin@weather.app` and password `Admin1234!`, or register a new account.
 - **Registration**: Provide your email and password to create a new account.
-- **Session**: After login, a JWT token is generated, and the session will expire in 30 minutes.
 
 ### Weather Search
 
@@ -87,13 +90,14 @@ You can deploy the app to any static site hosting service, such as Netlify.
 
 ### State Management
 
-User details and application state are managed using Zustand store.
+User details and application state are managed using Redux.
 
 ## Technologies Used
 
 - **Frontend**: React, TypeScript
-- **State Management**: Zustand
+- **State Management**: Redux
 - **Charts**: Recharts
+- **Forms**: React Hook Form
 - **API**: Visual Crossing Weather API, Google Maps API
 - **Hosting**: Netlify
 
