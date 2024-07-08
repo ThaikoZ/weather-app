@@ -1,29 +1,55 @@
 import { CloudIcon } from "@heroicons/react/16/solid";
-import { useForm } from "@tanstack/react-form";
 import users from "../data/users";
 import { SignIn } from "../utils/User";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
+
+const schema = z.object({
+  email: z
+    .string({ message: "Text cannot be a number" })
+    .email({ message: "This is not a valid email address" })
+    .max(55, { message: "Given text is too long" })
+    .min(1, { message: "Email cannot be empty" }),
+  password: z
+    .string()
+    .max(55, { message: "Given text is too long" })
+    .min(1, { message: "Password cannot be empty" }),
+});
 
 export default function Example() {
-  const form = useForm<SignIn>({
-    onSubmit: async ({ value }) => {
-      // An Endpoint to a backend
-      const user = users.find(
-        (user) => user.email == value.email && user.password == value.password
-      );
-
-      if (user) {
-        // Set session TOKEN
-        // Set Redux Authentication bool
-        // Set User data in store
-        // Navigate to dashboard
-        console.log(user);
-      } else console.log("User didnt find");
-    },
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<SignIn>({
+    resolver: zodResolver(schema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
+  const onSubmit: SubmitHandler<SignIn> = (data) => {
+    console.log(data);
+    const user = users.find(
+      (user) => user.email == data.email && user.password == data.password
+    );
+
+    if (user) {
+      // Set Redux Authentication bool
+      // Set User data in store
+      // Navigate to dashboard
+      console.log(user);
+      navigate("/dashboard");
+    } else {
+      setError("email", { type: "manual", message: "User not found" });
+      setError("password", { type: "manual", message: "User not found" });
+    }
+  };
 
   return (
     <>
@@ -39,14 +65,7 @@ export default function Example() {
           </div>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form
-              className="space-y-6"
-              onSubmit={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                form.handleSubmit();
-              }}
-            >
+            <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <label
                   htmlFor="email"
@@ -55,20 +74,14 @@ export default function Example() {
                   Email address
                 </label>
                 <div className="mt-2">
-                  <form.Field
-                    name="email"
-                    children={(field) => (
-                      <input
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        type="email"
-                        required
-                        className="py-2.5 pe-4 h-full w-full backdrop-blur-md bg-[#E8F0FE] text-[0.95rem] shadow-md rounded-lg text-black placeholder:text-black placeholder:text-opacity-55 placeholder:font-light ps-4 "
-                        placeholder=""
-                        maxLength={55}
-                      />
+                  <input
+                    {...register("email")}
+                    type="text"
+                    className={classNames(
+                      "py-2.5 pe-4 h-full w-full backdrop-blur-md bg-[#E8F0FE] text-[0.95rem] shadow-md rounded-lg text-black placeholder:text-black placeholder:text-opacity-55 placeholder:font-light ps-4 "
                     )}
+                    placeholder=""
+                    maxLength={55}
                   />
                 </div>
               </div>
@@ -91,22 +104,21 @@ export default function Example() {
                   </div> */}
                 </div>
                 <div className="mt-2">
-                  <form.Field
-                    name="password"
-                    children={(field) => (
-                      <input
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        type="password"
-                        required
-                        className="py-2.5 pe-4 h-full w-full backdrop-blur-md bg-[#E8F0FE] text-[0.95rem] shadow-md rounded-lg text-black placeholder:text-white placeholder:text-opacity-55 placeholder:font-light ps-4 "
-                      />
+                  <input
+                    {...register("password")}
+                    type="password"
+                    className={classNames(
+                      "py-2.5 pe-4 h-full w-full backdrop-blur-md bg-[#E8F0FE] text-[0.95rem] shadow-md rounded-lg text-black placeholder:text-white placeholder:text-opacity-55 placeholder:font-light ps-4 "
                     )}
                   />
                 </div>
               </div>
-              <div>
+              {errors && (
+                <div className="text-rose-400 text-center">
+                  {errors.email?.message || errors.password?.message}
+                </div>
+              )}
+              <div className="pt-3">
                 <button
                   type="submit"
                   className="flex w-full justify-center rounded-xl bg-black px-3 py-1.5 text-sm font-semibold leading-6  text-white shadow-sm bg-opacity-30 hover:bg-opacity-25"
