@@ -14,9 +14,9 @@ Welcome to the Weather App! This application allows you to check the weather in 
 - **Global Weather Search**: Find weather information for cities worldwide.
 - **7-Day Forecast**: View the weather forecast for the next 7 days.
 - **18-Hour Temperature Chart**: Visualize temperature trends for the next 18 hours.
-- **User Authentication**: Create an account or login with existing credentials.
-- **Session Management**: User sessions expire after 30 minutes for security.
 - **Responsive Design**: Optimized for both desktop and mobile devices.
+- **TODO: User Authentication**: Create an account or login with existing credentials.
+- **Session Management**: User sessions expire after 30 minutes for security.
 
 ## Getting Started
 
