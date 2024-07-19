@@ -44,7 +44,7 @@ export default function Example() {
       // Set User data in store
       // Navigate to dashboard
       console.log(user);
-      navigate("/dashboard");
+      navigate("/app/dashboard");
     } else {
       setError("email", { type: "manual", message: "User not found" });
       setError("password", { type: "manual", message: "User not found" });
@@ -53,7 +53,7 @@ export default function Example() {
 
   return (
     <>
-      <div className="flex min-h-full flex-1  justify-center px-6 py-12 lg:px-8 ">
+      <div className="flex min-h-full flex-1  justify-center px-4 sm:px-6 pt-6 sm:py-12 lg:px-8 ">
         <div className="w-fit bg-black p-14 rounded-xl bg-opacity-15 backdrop-blur-md text-white duration-500 transition-colors overflow-hidden">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <div className="flex items-center justify-center gap-2.5 font-semibold p-1">

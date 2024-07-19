@@ -10,12 +10,11 @@ export function App() {
     <Router>
       <SidebarContextProvider>
         <Routes>
-          <Route>
-            <Route path="/app" Component={Sidebar}>
-              <Route index Component={DashboardPage} />
-              <Route path="dashboard" Component={DashboardPage} />
-              <Route path="*" element={<NoPage />} />
-            </Route>
+          <Route index element={<LoginPage />} />
+          <Route path="/app" element={<Sidebar />}>
+            <Route index element={<DashboardPage />} />
+            <Route path="dashboard" element={<DashboardPage />} />
+            <Route path="*" element={<NoPage />} />
           </Route>
           <Route path="/auth">
             <Route path="login" element={<LoginPage />} />
